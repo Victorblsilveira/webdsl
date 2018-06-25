@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webdsl:Application
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:webdsl="http://eclipse.com/obeoum/projects/webdsl"
+    xsi:schemaLocation="http://eclipse.com/obeoum/projects/webdsl web.ecore">
+  <code xsi:type="webdsl:Front"
+      id="10">
+    <language
+        type="JavaScript">
+      <requisition
+          method="get"
+          url="http://teste"
+          name="teste"/>
+      <interceptor
+          name="tokenInterceptor"
+          method="get"
+          url="http://teste"/>
+    </language>
+  </code>
+</webdsl:Application>
