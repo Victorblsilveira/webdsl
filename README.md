@@ -5,7 +5,7 @@ Projeto voltado para desenvolvimento de uma DSL que permita criação de aplica�
 O projeto consiste na criação de uma linguagem que permita a fácil especificação na codificação desejada, da linguagem será gerado um código esqueleto para auxiliar o desenvolvimento.
 
 ## Modelo
-![Modelo](webdsl/modelo.png)
+![Modelo](modelo.png)
 
 ## Gramática 
 
