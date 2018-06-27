@@ -5,7 +5,7 @@ Projeto voltado para desenvolvimento de uma DSL que permita criação de aplica�
 O projeto consiste na criação de uma linguagem que permita a fácil especificação na codificação desejada, da linguagem será gerado um código esqueleto para auxiliar o desenvolvimento.
 
 ## Modelo
-    ![Modelo](modelo.png)
+![Modelo](modelo.png)
 
 ## Gramática 
 
@@ -65,3 +65,30 @@ O projeto consiste na criação de uma linguagem que permita a fácil especifica
         'method' method=EString
         'url' url=EString
       '}';
+### Exemplo
+     Application teste1 {
+        code { 
+            Front {
+                id "App1"
+                language Language {
+
+                    type "javascript"
+
+                    requisition {
+                        Requisition "1" { 
+                            method "get"
+                            url "http.teste1"
+                        }
+                    }
+
+                    interceptor {
+                        Interceptor "2" {
+                            method "get" 
+                            url "http.teste1"
+                        }
+
+                    }
+                }
+            }
+        }
+    }
