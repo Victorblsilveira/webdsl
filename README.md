@@ -65,3 +65,30 @@ O projeto consiste na criação de uma linguagem que permita a fácil especifica
         'method' method=EString
         'url' url=EString
       '}';
+### Exemplo
+     Application teste1 {
+        code { 
+            Front {
+                id "App1"
+                language Language {
+
+                    type "javascript"
+
+                    requisition {
+                        Requisition "1" { 
+                            method "get"
+                            url "http.teste1"
+                        }
+                    }
+
+                    interceptor {
+                        Interceptor "2" {
+                            method "get" 
+                            url "http.teste1"
+                        }
+
+                    }
+                }
+            }
+        }
+    }
