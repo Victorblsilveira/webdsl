@@ -39,41 +39,95 @@ public class MyDslGenerator extends AbstractGenerator {
 	
 		 for (Application e : IterableExtensions.filter(toIterable(resource.getAllContents()), Application.class)) {
 	            fsa.generateFile(
-	            	nameProvider.getFullyQualifiedName(e).toString() + ".java",
+	            	nameProvider.getFullyQualifiedName(e).toString() + ".js",
 	                compile(e));
-	        }
+	       }
 	}
 	
 	private CharSequence compile(Application e) {
 		// TODO Auto-generated method stub
-		return null;
+		String cdg = "";
+		
+		for (Front c : IterableExtensions.filter(toIterable(e.eAllContents()), Front.class)) {
+			
+			cdg += compile(c);
+		}
+		
+		for (Back c : IterableExtensions.filter(toIterable(e.eAllContents()), Back.class)) {
+			
+			cdg += compile(c);
+		}
+		
+		return cdg;
 	}
 	
 	private CharSequence compile(Code e) {
 		// TODO Auto-generated method stub
-		return null;
+		String cdg = "";
+		
+		for (Front c : IterableExtensions.filter(toIterable(e.eAllContents()), Front.class)) {
+			cdg += compile(c);
+		}
+		for (Back c : IterableExtensions.filter(toIterable(e.eAllContents()), Back.class)) {
+			cdg += compile(c);
+		}
+		return cdg;
 	}
 	
 	private CharSequence compile(Front e) {
 		// TODO Auto-generated method stub
-		return null;
+		String cdg = "";
+		for (Language c : IterableExtensions.filter(toIterable(e.eAllContents()), Language.class)) {
+			cdg += compile(c);
+		}
+		return cdg;
 	}
 	
 	private CharSequence compile(Back e) {
 		// TODO Auto-generated method stub
-		return null;
+		String cdg = "";
+		return cdg;
 	}
 	private CharSequence compile(Language e) {
 		// TODO Auto-generated method stub
-		return null;
+		String cdg = "";
+		
+		for (Requisition c : IterableExtensions.filter(toIterable(e.eAllContents()), Requisition.class)) {
+			cdg += compile(c);
+		}
+		
+		for (Interceptor c : IterableExtensions.filter(toIterable(e.eAllContents()), Interceptor.class)) {
+			cdg += compile(c);
+		}
+		
+		return cdg;
 	}
 	private CharSequence compile(Interceptor e) {
 		// TODO Auto-generated method stub
-		return null;
+		String cdg = new StringBuilder()
+		        .append("\n function Interceptor_"+e.getName()+ "(){\n")
+		        .append("(function(open) { XMLHttpRequest.prototype.open = function(method, url, async, user, pass) { \n")
+		        .append("this.addEventListener(\"readystatechange\", function() {\n")
+		        .append("if (this.readyState == 4) { console.log(this.status); } \n")
+		        .append("}, false); \n")
+		        .append("open.call(this, "+e.getMethod()+","+e.getUrl()+", async, user, pass); \n")
+		        .append("this.setRequestHeader(\"header\", \"field\") };\n ")
+		        .append("})(XMLHttpRequest.prototype.open);} \n\n\n")
+		        .toString();		
+		return cdg;
 	}
+
 	private CharSequence compile(Requisition e) {
 		// TODO Auto-generated method stub
-		return null;
+		String cdg = new StringBuilder()
+		        .append("\n function Request_"+e.getName()+"(){ \n")
+		        .append("var request = new XMLHttpRequest(); \n")
+		        .append("request.open('"+e.getMethod()+"', '"+e.getUrl()+"', true); \n")
+		        .append("request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');")
+		        .append("request.send(); \n } \n \n \n")
+		        .toString();	
+		
+		return cdg;
 	}
 	
 }
