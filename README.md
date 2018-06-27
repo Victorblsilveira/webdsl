@@ -4,6 +4,22 @@ Projeto voltado para desenvolvimento de uma DSL que permita criação de aplica�
 
 O projeto consiste na criação de uma linguagem que permita a fácil especificação na codificação desejada, da linguagem será gerado um código esqueleto para auxiliar o desenvolvimento.
 
+Extensão do arquivo : .mydsl
+
+Como rodar :
+
+   1. Rodar projeto do xtext como aplicação eclipse ->
+        - Botão direito em cima do projeto run as -> Eclipse Application
+        - Isso ira abrir uma nova instãncia do eclipse
+        
+   2. Na nova instância do eclipse :
+        - Criar um projeto 
+        - Criar pasta src
+        - Criar arquivo com a extensão .mydsl
+        - Escrever no arquivo utilizando a gramática especificada abaixo
+        - Salvar arquivo
+        - Código é gerado automaticamente ao salvar o arquivo .mydsl
+        
 ## Modelo
 ![Modelo](modelo.png)
 
